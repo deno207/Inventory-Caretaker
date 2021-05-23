@@ -1,0 +1,12 @@
+<!DOCTYPE dataset SYSTEM "../database.dtd">
+<dataset>
+  <Address id="1" city="Crugybar" country="UK" county="Llanwrda" lineOne="The Old Post Office" postCode="SA19 8TH"/>
+  <Category id="1" description="All of the fruit" imageName="" name="Fruit"/>
+  <StockItem id="1" currentStock="0.0" description="A Yellow fruit with a sour taste" hasSubItem="1" imageName="" lowStock="10.0" measurementType="3" name="Lemon" subItemPlural="Pallets" subItemSingular="Pallet" category_id="1"/>
+  <StockItem_SubItem StockItem_id="1" subItems_id="1"/>
+  <StockItem_Supplier StockItem_id="1" suppliers_id="1"/>
+  <StockItem_Supplier StockItem_id="1" suppliers_id="2"/>
+  <SubItem id="1" amount="0.0" location="In Cardboard" displayId="Pallet 1"/>
+  <Supplier id="1" description="The Supplier of all fruity needs" imageName="" name="Fruit Inc" address_id="1"/>
+  <Supplier id="2" description="The Supplier of all veg" imageName="" name="Veg Inc" address_id="1"/>
+</dataset>

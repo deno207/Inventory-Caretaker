@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="900.0" prefWidth="740.0" stylesheets="/css/main.css">
+    <AnchorPane AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" prefHeight="60" styleClass="top-bar">
+        <Label fx:id="titleLabel" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="10" styleClass="main-menu"/>
+        <Button fx:id="cancelButton" AnchorPane.topAnchor="5" AnchorPane.rightAnchor="10" styleClass="image">
+            <graphic>
+                <ImageView>
+                    <Image url="/images/system/Cancel-Button.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+    </AnchorPane>
+    <ScrollPane AnchorPane.topAnchor="70" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" fitToWidth="true">
+        <GridPane fx:id="displayItemGrid" vgap="20">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50" halignment="CENTER"/>
+                <ColumnConstraints percentWidth="50" halignment="CENTER"/>
+                <ColumnConstraints percentWidth="50" halignment="CENTER"/>
+            </columnConstraints>
+        </GridPane>
+    </ScrollPane>
+</AnchorPane>

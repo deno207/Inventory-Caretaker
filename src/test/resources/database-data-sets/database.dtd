@@ -1,0 +1,75 @@
+<!ELEMENT dataset (
+    Address*,
+    Category*,
+    StockItem*,
+    StockItem_SubItem*,
+    StockItem_Supplier*,
+    SubItem*,
+    Supplier*)>
+
+<!ELEMENT Address EMPTY>
+<!ATTLIST Address
+    id CDATA #REQUIRED
+    city CDATA #IMPLIED
+    country CDATA #IMPLIED
+    county CDATA #IMPLIED
+    lineOne CDATA #IMPLIED
+    lineTwo CDATA #IMPLIED
+    postCode CDATA #IMPLIED
+>
+
+<!ELEMENT Category EMPTY>
+<!ATTLIST Category
+    id CDATA #REQUIRED
+    description CDATA #IMPLIED
+    imageName CDATA #IMPLIED
+    name CDATA #IMPLIED
+    parent_id CDATA #IMPLIED
+>
+
+<!ELEMENT StockItem EMPTY>
+<!ATTLIST StockItem
+    id CDATA #REQUIRED
+    currentStock CDATA #REQUIRED
+    description CDATA #IMPLIED
+    hasSubItem CDATA #REQUIRED
+    imageName CDATA #IMPLIED
+    lowStock CDATA #REQUIRED
+    measurementType CDATA #IMPLIED
+    name CDATA #IMPLIED
+    subItemPlural CDATA #IMPLIED
+    subItemSingular CDATA #IMPLIED
+    category_id CDATA #IMPLIED
+>
+
+<!ELEMENT StockItem_SubItem EMPTY>
+<!ATTLIST StockItem_SubItem
+    StockItem_id CDATA #REQUIRED
+    subItems_id CDATA #REQUIRED
+>
+
+<!ELEMENT StockItem_Supplier EMPTY>
+<!ATTLIST StockItem_Supplier
+    StockItem_id CDATA #REQUIRED
+    suppliers_id CDATA #REQUIRED
+>
+
+<!ELEMENT SubItem EMPTY>
+<!ATTLIST SubItem
+    id CDATA #REQUIRED
+    amount CDATA #REQUIRED
+    displayId CDATA #IMPLIED
+    location CDATA #IMPLIED
+>
+
+<!ELEMENT Supplier EMPTY>
+<!ATTLIST Supplier
+    id CDATA #REQUIRED
+    description CDATA #IMPLIED
+    imageName CDATA #IMPLIED
+    name CDATA #IMPLIED
+    phoneNumber CDATA #IMPLIED
+    website CDATA #IMPLIED
+    address_id CDATA #IMPLIED
+>
+

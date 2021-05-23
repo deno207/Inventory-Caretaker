@@ -1,0 +1,16 @@
+This project requires JRE (Java Runtime Enviroment) version 14.x
+in order to run on your system. You will need to install this yourself.
+
+To run the project, you have two options.
+You can either use the provided start scripts (.sh for linux or .bat for windows)
+or you can double click the jar file (or right click and select 'run with java').
+Both the jar file and the scripts should be marked as executable, so either
+option should work.
+
+====Note====
+I have noticed that (aleast on ubuntu) launching via the scripts and
+launching via clicking on the jar use different databases. I currently
+believe that this might be because I used relative file paths to
+identify the location of the database file, and opening the application
+via clicking on the jar might have a different working directory then if
+you open the application via the script.

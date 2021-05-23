@@ -1,0 +1,27 @@
+#LaTeX intermediary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+
+#complied java files and output files
+target/
+*.class
+
+#database files
+*.db
+
+#IntelliJ IDE Files
+.idea/
+*.iml
+
+#Application generated image files
+Code/images/
+
+#Generated Java-Doc files
+Java-Doc/
