@@ -19,6 +19,7 @@ module inventory.caretaker {
     opens images.supplier;
     opens images.category;
     opens images.stock;
+    opens sql;
 
     exports uk.ac.aber.cs39440.inventory.caretaker.application;
 }
