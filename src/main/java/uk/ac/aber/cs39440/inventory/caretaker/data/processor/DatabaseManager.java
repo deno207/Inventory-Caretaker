@@ -1,5 +1,6 @@
 package uk.ac.aber.cs39440.inventory.caretaker.data.processor;
 
+import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.hibernate.jpa.QueryHints;
 import uk.ac.aber.cs39440.inventory.caretaker.data.entity.Address;
 import uk.ac.aber.cs39440.inventory.caretaker.data.entity.Category;
@@ -13,6 +14,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -41,8 +43,7 @@ public class DatabaseManager {
         if (entityManagerFactory == null) {
             synchronized (DatabaseManager.class) {
                 if (entityManagerFactory == null) {
-                    entityManagerFactory = Persistence
-                            .createEntityManagerFactory("uk.ac.aber.cs39440.inventory.caretaker.sqlite.local");
+                    entityManagerFactory = new HibernatePersistenceProvider().createContainerEntityManagerFactory(new SQLiteProvider(), new HashMap());
                 }
             }
         }
