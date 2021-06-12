@@ -3,10 +3,9 @@ module inventory.caretaker {
     requires javafx.fxml;
     requires org.hibernate.orm.core;
     requires java.persistence;
+    requires sqlite.dialect;
+    requires sqlite.jdbc;
     requires java.sql;
-    requires net.bytebuddy;
-    requires com.fasterxml.classmate;
-    requires java.xml.bind;
 
     opens uk.ac.aber.cs39440.inventory.caretaker.ui.controller to javafx.fxml;
     opens uk.ac.aber.cs39440.inventory.caretaker.ui.controller.supplier to javafx.fxml;
