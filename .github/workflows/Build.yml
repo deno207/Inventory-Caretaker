@@ -26,7 +26,7 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn package
+      run: mvn -Dplatform=linux package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -49,7 +49,7 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn package
+      run: mvn -Dplatform=win package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
@@ -72,7 +72,7 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn package
+      run: mvn -Dplatform=mac package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
