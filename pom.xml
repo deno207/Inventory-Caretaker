@@ -111,6 +111,10 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                        <configuration>
+                            <!--Skip the Integration tests until headless mode is configured-->
+                            <skipITs>true</skipITs>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
