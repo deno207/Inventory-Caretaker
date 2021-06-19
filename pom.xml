@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>Inventory-Caretaker</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>16</maven.compiler.source>
@@ -16,9 +16,11 @@
         <testfx.version>4.0.16-alpha</testfx.version>
         <hibernate.version>5.4.27.Final</hibernate.version>
         <maven.test.plugin.version>3.0.0-M5</maven.test.plugin.version>
+        <jpackage.plugin.version>1.5.1</jpackage.plugin.version>
         <module.name>inventory.caretaker</module.name>
         <main.class>uk.ac.aber.cs39440.inventory.caretaker.application.Application</main.class>
         <platform>linux</platform>
+        <build.module.directory>${project.build.directory}/modules</build.module.directory>
     </properties>
 
     <dependencies>
@@ -26,28 +28,33 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.34.0</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>com.github.gwenn</groupId>
             <artifactId>sqlite-dialect</artifactId>
             <version>0.1.2</version>
+            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>${javafx.version}</version>
             <classifier>${platform}</classifier>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>${javafx.version}</version>
             <classifier>${platform}</classifier>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -127,7 +134,7 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/modules</outputDirectory>
+                            <outputDirectory>${build.module.directory}</outputDirectory>
                             <excludeTransitive>false</excludeTransitive>
                             <includeScope>runtime</includeScope>
                             <copyPom>true</copyPom>
@@ -147,7 +154,7 @@
                             <goal>add-module-info</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/modules</outputDirectory>
+                            <outputDirectory>${build.module.directory}</outputDirectory>
                             <modules>
                                 <module>
                                     <artifact>
@@ -249,31 +256,106 @@
                             <overwriteExistingFiles>true</overwriteExistingFiles>
                         </configuration>
                     </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>${jpackage.plugin.version}</version>
+                <executions>
                     <execution>
-                        <id>JLink</id>
+                        <id>package-project</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>create-runtime-image</goal>
+                            <goal>jpackage</goal>
                         </goals>
                         <configuration>
-                            <modulePath>
-                                <path>${project.build.directory}/modules</path>
+                            <name>Inventory Caretaker</name>
+                            <appVersion>${version}</appVersion>
+                            <vendor>Damion Wilson</vendor>
+                            <module>${module.name}/${main.class}</module>
+                            <modulePaths>
+                                <path>${build.module.directory}</path>
                                 <path>${project.build.directory}/classes</path>
-                            </modulePath>
-                            <modules>
-                                <module>${module.name}</module>
-                            </modules>
-                            <launcher>
-                                <name>Inventory-Caretaker</name>
-                                <module>${module.name}/${main.class}</module>
-                            </launcher>
-                            <outputDirectory>
-                                ${project.build.directory}/jlink-image
-                            </outputDirectory>
+                            </modulePaths>
+                            <destination>${project.build.directory}/dist</destination>
+                            <javaOptions>
+                                <option>--enable-preview</option>
+                                <option>-Dfile.encoding=UTF-8</option>
+                            </javaOptions>
+                            <copyright>Copyright 2021, all rights reserved</copyright>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>Windows-Build</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.panteleyev</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>${jpackage.plugin.version}</version>
+                        <configuration>
+                            <winDirChooser>true</winDirChooser>
+                            <winShortcut>true</winShortcut>
+                            <winMenu>true</winMenu>
+                            <winMenuGroup>Inventory Caretaker</winMenuGroup>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Mac-Build</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.panteleyev</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>${jpackage.plugin.version}</version>
+                        <configuration>
+                            <macPackageIdentifier>Inventory Caretaker</macPackageIdentifier>
+                            <macPackageName>Inventory Caretaker</macPackageName>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>Linux-Build</id>
+            <activation>
+                <os>
+                    <family>linux</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.panteleyev</groupId>
+                        <artifactId>jpackage-maven-plugin</artifactId>
+                        <version>${jpackage.plugin.version}</version>
+                        <configuration>
+                            <linuxMenuGroup>Inventory Caretaker</linuxMenuGroup>
+                            <linuxShortcut>true</linuxShortcut>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
