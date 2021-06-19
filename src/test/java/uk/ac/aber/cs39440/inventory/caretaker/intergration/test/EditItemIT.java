@@ -35,7 +35,7 @@ public class EditItemIT extends ApplicationTest {
         new DatabaseManager();
 
         //set up database connection so test data can be entered and validated
-        databaseConnection = new DatabaseConnection(DriverManager.getConnection("jdbc:sqlite:database/test.db", "sa", ""));
+        databaseConnection = new DatabaseConnection(DriverManager.getConnection("jdbc:sqlite:test.db", "sa", ""));
         databaseConnection.getConfig().setProperty(DatabaseConfig.FEATURE_ALLOW_EMPTY_FIELDS, true);
 
         FxToolkit.registerPrimaryStage();
