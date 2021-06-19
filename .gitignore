@@ -21,7 +21,7 @@ target/
 *.iml
 
 #Application generated image files
-Code/images/
+images/
 
 #Generated Java-Doc files
 Java-Doc/
