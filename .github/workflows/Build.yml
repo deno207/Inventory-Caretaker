@@ -24,7 +24,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '16'
-        distribution: 'openjdk'
+        distribution: 'adopt'
     - name: Build
       run: mvn package
     - name: Upload Artifact
@@ -47,7 +47,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '16'
-        distribution: 'openjdk'
+        distribution: 'adopt'
     - name: Build
       run: mvn package
     - name: Upload Artifact
@@ -70,7 +70,7 @@ jobs:
       uses: actions/setup-java@v2
       with:
         java-version: '16'
-        distribution: 'openjdk'
+        distribution: 'adopt'
     - name: Build
       run: mvn package
     - name: Upload Artifact
