@@ -1,0 +1,82 @@
+# This workflow will package the project into installer files that can be
+# distrubuted to users. Created installiers are system dependent and must
+# be built on the target platform.
+
+name: Packge Project For Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-tag:
+        description: 'Release tag to build'
+        required: true
+
+jobs:
+  ubuntu-build:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.inputs.release-tag}}
+    - name: Set up JDK 16
+      uses: actions/setup-java@v2
+      with:
+        java-version: '16'
+        distribution: 'openjdk'
+    - name: Build
+      run: mvn package
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Linux-Installer.deb
+        path: target/dist/*.deb
+        if-no-files-found: error
+        retention-days: 1
+
+  windows-build:
+    runs-on: windows-2019
+    
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.inputs.release-tag}}
+    - name: Set up JDK 16
+      uses: actions/setup-java@v2
+      with:
+        java-version: '16'
+        distribution: 'openjdk'
+    - name: Build
+      run: mvn package
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: Window-Installer.exe
+        path: target/dist/*.exe
+        if-no-files-found: error
+        retention-days: 1
+    
+  mac-build:
+    runs-on: macos-10.15
+    
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+      with:
+        ref: ${{github.event.inputs.release-tag}}
+    - name: Set up JDK 16
+      uses: actions/setup-java@v2
+      with:
+        java-version: '16'
+        distribution: 'openjdk'
+    - name: Build
+      run: mvn package
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: MacOS-Installer.dmg
+        path: target/dist/*.dmg
+        if-no-files-found: error
+        retention-days: 1

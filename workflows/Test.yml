@@ -1,7 +1,7 @@
 # This workflow will run the project tests on a push to a non-master branch or when a pull request to master is created.
 # It will also run the tests on the master branch at mid-day everyday.
 
-name: Java CI with Maven
+name: Run Tests
 
 on:
   push:
