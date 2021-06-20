@@ -2,8 +2,8 @@ package com.github.deno207.inventory.caretaker.view.controller.supplier;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import com.github.deno207.inventory.caretaker.view.entity.Address;
-import com.github.deno207.inventory.caretaker.view.entity.Supplier;
+import com.github.deno207.inventory.caretaker.model.entity.Address;
+import com.github.deno207.inventory.caretaker.model.entity.Supplier;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 
 import java.io.File;

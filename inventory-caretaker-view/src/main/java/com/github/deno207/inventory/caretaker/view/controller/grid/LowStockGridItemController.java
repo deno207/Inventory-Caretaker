@@ -1,7 +1,7 @@
 package com.github.deno207.inventory.caretaker.view.controller.grid;
 
 import javafx.fxml.FXML;
-import com.github.deno207.inventory.caretaker.view.entity.StockItem;
+import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 
 /**

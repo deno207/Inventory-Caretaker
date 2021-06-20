@@ -1,6 +1,6 @@
 package com.github.deno207.inventory.caretaker.view.controller.grid;
 
-import com.github.deno207.inventory.caretaker.view.entity.StockItem;
+import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 import com.github.deno207.inventory.caretaker.view.adaptor.RemovableSelectionController;

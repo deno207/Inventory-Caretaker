@@ -1,8 +1,8 @@
 package com.github.deno207.inventory.caretaker.model.entity;
 
 import org.hibernate.annotations.GenericGenerator;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
-import com.github.deno207.inventory.caretaker.view.adaptor.ItemType;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

@@ -1,6 +1,6 @@
 module inventory.caretaker.view {
     requires javafx.fxml;
-    requires javafx.controls;
+    requires transitive javafx.controls;
     requires inventory.caretaker.model;
 
     exports com.github.deno207.inventory.caretaker.view.adaptor to inventory.caretaker.model;

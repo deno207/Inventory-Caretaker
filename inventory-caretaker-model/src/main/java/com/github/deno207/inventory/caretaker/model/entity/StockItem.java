@@ -1,8 +1,8 @@
 package com.github.deno207.inventory.caretaker.model.entity;
 
 import org.hibernate.annotations.GenericGenerator;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
-import com.github.deno207.inventory.caretaker.view.adaptor.ItemType;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ import java.util.List;
  *
  * @author Damion Wilson
  * @version 1.2.1
- * @see uk.ac.aber.cs39440.inventory.caretaker.data.processor.ImageProcessor
+ * @see com.github.deno207.inventory.caretaker.core.processor.ImageProcessor
  * @see DisplayItem
  * @see ItemType
  * @see MeasurementType
