@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="900.0" prefWidth="740.0" stylesheets="/css/main.css">
+    <AnchorPane AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.topAnchor="0" styleClass="top-bar">
+        <Label fx:id="supplierName" styleClass="main-menu" AnchorPane.topAnchor="0" AnchorPane.leftAnchor="0"/>
+        <Button fx:id="editButton" styleClass="image" AnchorPane.topAnchor="5" AnchorPane.rightAnchor="60">
+            <graphic>
+                <ImageView>
+                    <Image url="/images/system/edit-button.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="closeButton" styleClass="image"  AnchorPane.topAnchor="5" AnchorPane.rightAnchor="0">
+            <graphic>
+                <ImageView>
+                    <Image url="/images/system/Cancel-Button.png"/>
+                </ImageView>
+            </graphic>
+        </Button>
+    </AnchorPane>
+    <GridPane vgap="20" hgap="20" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="70" prefHeight="830">
+        <columnConstraints>
+            <ColumnConstraints percentWidth="60"/>
+            <ColumnConstraints percentWidth="40" halignment="RIGHT"/>
+        </columnConstraints>
+        <Label text="Description" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="large-text"/>
+        <Label fx:id="description" GridPane.rowIndex="1" GridPane.columnIndex="0" wrapText="true"/>
+
+        <ImageView fx:id="supplierImage" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.rowSpan="7" fitWidth="300"
+                   fitHeight="300"/>
+
+        <Label text="Website" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="large-text"/>
+        <Label fx:id="website" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+
+        <Label text="Phone Number" GridPane.rowIndex="4" GridPane.columnIndex="0" styleClass="large-text"/>
+        <Label fx:id="phoneNumber" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+
+        <Label text="Address" GridPane.rowIndex="6" GridPane.columnIndex="0" styleClass="large-text"/>
+        <Label fx:id="addressLineOne" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <Label fx:id="addressLineTwo" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <Label fx:id="city" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <Label fx:id="county" GridPane.rowIndex="10" GridPane.columnIndex="0"/>
+        <Label fx:id="country" GridPane.rowIndex="11" GridPane.columnIndex="0"/>
+        <Label fx:id="postcode" GridPane.rowIndex="12" GridPane.columnIndex="0"/>
+    </GridPane>
+</AnchorPane>

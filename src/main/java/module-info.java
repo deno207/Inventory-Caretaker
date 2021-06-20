@@ -21,4 +21,6 @@ module inventory.caretaker {
     opens sql;
 
     exports uk.ac.aber.cs39440.inventory.caretaker.application;
+    exports uk.ac.aber.cs39440.inventory.caretaker.data.processor to inventory.caretaker.view;
+    exports uk.ac.aber.cs39440.inventory.caretaker.data.entity to inventory.caretaker.view;
 }
