@@ -1,4 +1,4 @@
-package com.github.deno207.inventory.caretaker.core.processor;
+package com.github.deno207.inventory.caretaker.model.database;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.hibernate.jpa.QueryHints;

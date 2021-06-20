@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
 import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import uk.ac.aber.cs39440.inventory.caretaker.data.processor.ImageProcessor;
+import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 import com.github.deno207.inventory.caretaker.view.controller.grid.GridItemController;

@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Address;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import uk.ac.aber.cs39440.inventory.caretaker.data.processor.ImageProcessor;
+import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 

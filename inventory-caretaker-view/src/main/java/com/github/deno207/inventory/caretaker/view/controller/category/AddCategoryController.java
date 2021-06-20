@@ -13,7 +13,7 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
-import com.github.deno207.inventory.caretaker.core.processor.ImageProcessor;
+import com.github.deno207.inventory.caretaker.view.image.ImageProcessor;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 import com.github.deno207.inventory.caretaker.view.adaptor.RemovableSelectionController;

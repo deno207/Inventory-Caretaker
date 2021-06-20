@@ -1,4 +1,4 @@
-package com.github.deno207.inventory.caretaker.core.application;
+package com.github.deno207.inventory.caretaker.view.application;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

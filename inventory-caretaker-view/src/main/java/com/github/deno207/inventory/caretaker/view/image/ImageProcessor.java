@@ -1,4 +1,4 @@
-package com.github.deno207.inventory.caretaker.core.processor;
+package com.github.deno207.inventory.caretaker.view.image;
 
 import javafx.scene.image.Image;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
