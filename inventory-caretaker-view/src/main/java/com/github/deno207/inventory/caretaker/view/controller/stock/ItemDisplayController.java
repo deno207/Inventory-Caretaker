@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
 import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 import com.github.deno207.inventory.caretaker.view.controller.grid.GridItemController;
@@ -78,7 +77,7 @@ public class ItemDisplayController extends BaseController implements UpdateContr
         currentStockLevel.setText(getStockString(stockItem.getCurrentStock()));
         lowStockLevel.setText(getStockString(stockItem.getLowStock()));
 
-        itemImage.setImage(new ImageProcessor().getItemImage(stockItem));
+        itemImage.setImage(imageProcessor.getItemImage(stockItem));
 
         supplierList.getChildren().clear();
         for (Supplier supplier: stockItem.getSuppliers()) {

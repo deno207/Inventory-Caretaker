@@ -76,7 +76,9 @@ public class EditCategoryController extends AddCategoryController{
         }
 
         try {
-            databaseManager.updateCategory(category.getId(), name, description, parent, selectedImageFile);
+            databaseManager.updateCategory(category.getId(), name, description, parent);
+            String imageName = imageProcessor.replaceCurrentImage(selectedImageFile, category, category.getId());
+            databaseManager.updateCategoryImage(category.getId(), imageName);
         } catch (IOException e) {
             displayErrorDialog("Error saving image", e);
         }

@@ -5,7 +5,6 @@ import com.github.deno207.inventory.caretaker.model.entity.Category;
 import com.github.deno207.inventory.caretaker.model.entity.MeasurementType;
 import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 
 import java.io.File;
@@ -52,7 +51,7 @@ public class EditItemController extends AddItemController {
         descriptionInput.setText(stockItem.getDescription());
 
         imageLocationLabel.setText(stockItem.getImageName());
-        imagePreview.setImage(new ImageProcessor().getItemImage(stockItem));
+        imagePreview.setImage(imageProcessor.getItemImage(stockItem));
 
         lowStockInput.setText(Float.toString(stockItem.getLowStock()));
 
@@ -116,7 +115,9 @@ public class EditItemController extends AddItemController {
         try {
             //save changes
             databaseManager.updateStockItem(name, description, lowStockAlert, measurementType, hasSubItem,
-                    singular, plural, category, suppliers, stockItem.getId(), selectedImageFile);
+                    singular, plural, category, suppliers, stockItem.getId());
+            String imageName = imageProcessor.replaceCurrentImage(selectedImageFile, stockItem, stockItem.getId());
+            databaseManager.updateStockItemImage(stockItem.getId(), imageName);
         } catch (IOException e) {
             displayErrorDialog("Error Saving Image", e);
         }

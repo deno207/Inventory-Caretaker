@@ -1,5 +1,6 @@
 package com.github.deno207.inventory.caretaker.view.controller;
 
+import com.github.deno207.inventory.caretaker.view.image.ImageProcessor;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
@@ -18,12 +19,14 @@ import java.io.IOException;
 public abstract class BaseController {
 
     protected DatabaseManager databaseManager;
+    protected ImageProcessor imageProcessor;
 
     /**
      * Creates the database manager instance for this controller
      */
     protected BaseController() {
         databaseManager = new DatabaseManager();
+        imageProcessor = new ImageProcessor();
     }
 
     /**

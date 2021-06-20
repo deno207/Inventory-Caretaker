@@ -13,7 +13,6 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 import com.github.deno207.inventory.caretaker.view.adaptor.RemovableSelectionController;
@@ -45,7 +44,6 @@ public class AddCategoryController extends BaseController implements RemovableSe
 
     protected Category parent;
     protected File selectedImageFile;
-    protected ImageProcessor imageProcessor;
     protected UpdateController parentController;
 
     /**
@@ -55,7 +53,6 @@ public class AddCategoryController extends BaseController implements RemovableSe
      */
     public AddCategoryController(UpdateController parentController) {
         this.parentController = parentController;
-        imageProcessor = new ImageProcessor();
     }
 
     /**
@@ -157,7 +154,9 @@ public class AddCategoryController extends BaseController implements RemovableSe
         }
 
         try {
-            databaseManager.addCategory(newCategory, selectedImageFile);
+            int databaseId = databaseManager.addCategory(newCategory);
+            String imageName = imageProcessor.saveExternalImage(selectedImageFile, newCategory, databaseId);
+            databaseManager.updateCategoryImage(databaseId, imageName);
         } catch (IOException e) {
             displayErrorDialog("Error saving message", e);
         }

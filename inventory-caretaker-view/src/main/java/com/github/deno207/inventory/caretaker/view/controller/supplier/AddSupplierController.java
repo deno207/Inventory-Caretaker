@@ -12,7 +12,6 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Address;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 
@@ -51,7 +50,6 @@ public class AddSupplierController extends BaseController {
 
     protected UpdateController parentController;
     protected File selectedImageFile;
-    protected ImageProcessor imageProcessor;
 
     /**
      * basic constructor that initialise variables
@@ -60,7 +58,6 @@ public class AddSupplierController extends BaseController {
      */
     public AddSupplierController(UpdateController parentController) {
         this.parentController = parentController;
-        imageProcessor = new ImageProcessor();
         selectedImageFile = null;
     }
 
@@ -142,7 +139,9 @@ public class AddSupplierController extends BaseController {
         supplier.setWebsite(website);
 
         try {
-            databaseManager.addSupplier(supplier, address, selectedImageFile);
+            int databaseId = databaseManager.addSupplier(supplier, address);
+            String imageName = imageProcessor.saveExternalImage(selectedImageFile, supplier, databaseId);
+            databaseManager.updateSupplierImage(databaseId, imageName);
         } catch (IOException e) {
             displayErrorDialog("Error saving message", e);
         }

@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
 import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor;
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
@@ -63,7 +62,7 @@ public class GridItemController extends BaseController {
         itemName.setText(displayItem.getName());
 
         //load item image or if item has no image, load default one
-        itemImage.setImage(new ImageProcessor().getItemImage(displayItem));
+        itemImage.setImage(imageProcessor.getItemImage(displayItem));
 
         stackPane.setOnMouseClicked(mouseEvent -> onClick());
     }

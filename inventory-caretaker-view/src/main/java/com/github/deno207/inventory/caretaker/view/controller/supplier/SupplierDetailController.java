@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Address;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 
@@ -34,7 +33,6 @@ public class SupplierDetailController extends BaseController implements UpdateCo
     @FXML private Label postcode;
 
     private Supplier supplier;
-    private final ImageProcessor imageProcessor;
     private final UpdateController parentController;
 
     /**
@@ -43,7 +41,6 @@ public class SupplierDetailController extends BaseController implements UpdateCo
      */
     public SupplierDetailController(Supplier supplier, UpdateController parentController) {
         this.supplier = supplier;
-        imageProcessor = new ImageProcessor();
         this.parentController = parentController;
     }
 

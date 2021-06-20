@@ -9,7 +9,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import com.github.deno207.inventory.caretaker.model.entity.Category;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 import com.github.deno207.inventory.caretaker.view.controller.grid.GridItemController;
@@ -31,7 +30,6 @@ public class CategoryDetailController extends BaseController implements UpdateCo
     @FXML private TilePane parentDisplay;
 
     private Category category;
-    private final ImageProcessor imageProcessor;
     private final UpdateController parentController;
 
     /**
@@ -40,7 +38,6 @@ public class CategoryDetailController extends BaseController implements UpdateCo
      */
     public CategoryDetailController(Category category, UpdateController parentController) {
         this.category = category;
-        imageProcessor = new ImageProcessor();
         this.parentController = parentController;
     }
 

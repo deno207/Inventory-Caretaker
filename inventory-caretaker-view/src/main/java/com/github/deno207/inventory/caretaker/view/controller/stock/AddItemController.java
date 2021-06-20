@@ -18,7 +18,6 @@ import com.github.deno207.inventory.caretaker.model.entity.Category;
 import com.github.deno207.inventory.caretaker.model.entity.MeasurementType;
 import com.github.deno207.inventory.caretaker.model.entity.StockItem;
 import com.github.deno207.inventory.caretaker.model.entity.Supplier;
-import com.github.deno207.inventory.caretaker.view.image.ImageProcessor
 import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.RemovableSelectionController;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
@@ -64,7 +63,6 @@ public class AddItemController extends BaseController implements RemovableSelect
     protected List<Supplier> suppliers;
     protected Category category;
     protected UpdateController parentController;
-    protected ImageProcessor imageProcessor;
     protected File selectedImageFile;
 
     /**
@@ -75,7 +73,6 @@ public class AddItemController extends BaseController implements RemovableSelect
     public AddItemController(UpdateController parentController) {
         this.parentController = parentController;
         suppliers = new ArrayList<>();
-        imageProcessor = new ImageProcessor();
     }
 
     /**
@@ -211,7 +208,9 @@ public class AddItemController extends BaseController implements RemovableSelect
 
         //save StockItem
         try {
-            databaseManager.addStockItem(newStockItem, selectedImageFile);
+            int databaseId = databaseManager.addStockItem(newStockItem);
+            String imageName = imageProcessor.saveExternalImage(selectedImageFile, newStockItem, databaseId);
+            databaseManager.updateStockItemImage(databaseId, imageName);
         } catch (IOException e) {
             displayErrorDialog("Error saving image", e);
         }

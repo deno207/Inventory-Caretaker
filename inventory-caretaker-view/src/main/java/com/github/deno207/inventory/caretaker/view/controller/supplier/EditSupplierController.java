@@ -99,7 +99,9 @@ public class EditSupplierController extends AddSupplierController {
         }
 
         try {
-            databaseManager.updateSupplier(supplier.getId(), name, description, website, phoneNumber, address, selectedImageFile);
+            databaseManager.updateSupplier(supplier.getId(), name, description, website, phoneNumber, address);
+            String imageName = imageProcessor.replaceCurrentImage(selectedImageFile, supplier, supplier.getId());
+            databaseManager.updateSupplierImage(supplier.getId(), imageName);
         } catch (IOException e) {
             displayErrorDialog("Error Saving Image", e);
         }

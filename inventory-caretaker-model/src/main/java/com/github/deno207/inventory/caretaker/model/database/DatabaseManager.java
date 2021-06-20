@@ -32,7 +32,6 @@ import java.util.List;
 public class DatabaseManager {
 
     protected static EntityManagerFactory entityManagerFactory;
-    private ImageProcessor imageProcessor;
 
     /**
      * Default constructor which initialises the EntityManagerFactory as a singleton variable so all DatabaseManager
@@ -46,7 +45,6 @@ public class DatabaseManager {
                 }
             }
         }
-        imageProcessor = new ImageProcessor();
     }
 
     /**
@@ -103,33 +101,20 @@ public class DatabaseManager {
     /**
      * Adds the provided StockItem object to the database and saves
      * @param newItem the StockItem to be added
-     * @param selectedImage The selected image file for this stock item
-     * @throws IOException if an error occurred while saving the image
+     * @return database id of the new stockItem object
      */
-    public void addStockItem(StockItem newItem, File selectedImage) throws IOException{
+    public int addStockItem(StockItem newItem){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            //save the new stock item to the database
-            entityManager.persist(newItem);
+        //save the new stock item to the database
+        entityManager.persist(newItem);
+        //commit the changes and close the manager
+        entityManager.getTransaction().commit();
+        entityManager.close();
 
-            //save the image if one was selected
-            String imageName = imageProcessor.saveExternalImage(selectedImage, newItem, newItem.getId());
-
-            //set the image name to the returned image name
-            newItem.setImageName(imageName);
-        } catch (IOException e) {
-            //error occurred, set image name to a blank string
-            System.err.println("Error saving selected image");
-            newItem.setImageName("");
-            throw e;
-        } finally {
-            //commit the changes and close the manager
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        return newItem.getId();
     }
 
     /**
@@ -164,35 +149,37 @@ public class DatabaseManager {
      * @param category The StockItems new Category
      * @param suppliers The new list of suppliers for the StockItem
      * @param id The database id of the StockItem to be updated
-     * @param selectedImage The image that has been selected
      */
     public void updateStockItem(String name, String description, float lowStockAlert,
                                 MeasurementType measurementType, boolean hasSubItems, String subItemSingular, String subItemPlural,
-                                Category category, List<Supplier> suppliers, int id, File selectedImage) throws IOException {
+                                Category category, List<Supplier> suppliers, int id){
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            StockItem stockItem = entityManager.find(StockItem.class, id);
-            stockItem.setName(name);
-            stockItem.setDescription(description);
-            stockItem.setLowStock(lowStockAlert);
-            stockItem.setMeasurementType(measurementType);
-            stockItem.setHasSubItem(hasSubItems);
-            stockItem.setSubItemPlural(subItemPlural);
-            stockItem.setSubItemSingular(subItemSingular);
-            stockItem.setCategory(category);
-            stockItem.setSuppliers(suppliers);
+        StockItem stockItem = entityManager.find(StockItem.class, id);
+        stockItem.setName(name);
+        stockItem.setDescription(description);
+        stockItem.setLowStock(lowStockAlert);
+        stockItem.setMeasurementType(measurementType);
+        stockItem.setHasSubItem(hasSubItems);
+        stockItem.setSubItemPlural(subItemPlural);
+        stockItem.setSubItemSingular(subItemSingular);
+        stockItem.setCategory(category);
+        stockItem.setSuppliers(suppliers);
 
-            String imageName = imageProcessor.replaceCurrentImage(selectedImage, stockItem, id);
-            stockItem.setImageName(imageName);
-        } catch (IOException e) {
-            System.err.println("Error saving new image file");
-            throw e;
-        }finally {
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
+    public void updateStockItemImage(int stockItemId, String imageName) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        StockItem stockItem = entityManager.find(StockItem.class, stockItemId);
+        stockItem.setImageName(imageName);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 
     /**
@@ -274,26 +261,18 @@ public class DatabaseManager {
     /**
      * Adds the provided Category to the database
      * @param category The Category to be added to the database
-     * @param selectedImage The image file that was selected for this category
-     * @throws IOException if an error occurred saving the image file
+     * @return database ID of the new Category object
      */
-    public void addCategory(Category category, File selectedImage) throws IOException{
+    public int addCategory(Category category) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            entityManager.persist(category);
+        entityManager.persist(category);
 
-            String imageName = imageProcessor.saveExternalImage(selectedImage, category, category.getId());
-            category.setImageName(imageName);
-        } catch (IOException e) {
-            System.err.println("Error saving image file");
-            category.setImageName("");
-            throw e;
-        } finally {
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return category.getId();
     }
 
     /**
@@ -302,27 +281,18 @@ public class DatabaseManager {
      * @param name The new name of the category
      * @param description The new description of the category
      * @param parent The new parent category
-     * @param selectedImage The image that has been selected
      */
-    public void updateCategory(int id, String name, String description, Category parent, File selectedImage) throws IOException {
+    public void updateCategory(int id, String name, String description, Category parent) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            Category category = entityManager.find(Category.class, id);
-            category.setName(name);
-            category.setDescription(description);
-            category.setParent(parent);
+        Category category = entityManager.find(Category.class, id);
+        category.setName(name);
+        category.setDescription(description);
+        category.setParent(parent);
 
-            String imageName = imageProcessor.replaceCurrentImage(selectedImage, category, id);
-            category.setImageName(imageName);
-        } catch (IOException e) {
-            System.err.println("Error saving image file");
-            throw e;
-        }finally {
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 
     /**
@@ -343,36 +313,38 @@ public class DatabaseManager {
         return category;
     }
 
+    public void updateCategoryImage(int categoryId, String imageName) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        Category category = entityManager.find(Category.class, categoryId);
+        category.setImageName(imageName);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+    }
+
     /**
      * Adds the provided Supplier to the database and saves the selected image file
      * @param supplier The Supplier to be added to the database
      * @param address The address that for this supplier
-     * @param selectedImage The image file that was selected for this supplier
-     * @throws IOException if there was an error saving the image file
+     * @return Database Id of the new Supplier object
      */
-    public void addSupplier(Supplier supplier, Address address, File selectedImage) throws IOException {
+    public int addSupplier(Supplier supplier, Address address) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            if (address != null) {
-                entityManager.persist(address);
-                supplier.setAddress(address);
-            }
-
-            entityManager.persist(supplier);
-
-            String imageName = imageProcessor.saveExternalImage(selectedImage, supplier, supplier.getId());
-
-            supplier.setImageName(imageName);
-        } catch (IOException e) {
-            System.err.println("Error saving image");
-            supplier.setImageName("");
-            throw e;
-        } finally {
-            entityManager.getTransaction().commit();
-            entityManager.close();
+        if (address != null) {
+            entityManager.persist(address);
+            supplier.setAddress(address);
         }
+
+        entityManager.persist(supplier);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
+        return supplier.getId();
     }
 
     /**
@@ -383,32 +355,20 @@ public class DatabaseManager {
      * @param website The new website of the supplier
      * @param phoneNumber The new phone number of the supplier
      * @param address The new address of the supplier
-     * @param selectedImage The selected image file
      */
     public void updateSupplier(int id, String name, String description, String website, String phoneNumber,
-                               Address address, File selectedImage) throws IOException {
+                               Address address) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
+        entityManager.getTransaction().begin();
 
-            Supplier supplier = entityManager.find(Supplier.class, id);
+        Supplier supplier = entityManager.find(Supplier.class, id);
 
-            supplier.setName(name);
-            supplier.setDescription(description);
-            supplier.setWebsite(website);
-            supplier.setPhoneNumber(phoneNumber);
+        supplier.setName(name);
+        supplier.setDescription(description);
+        supplier.setWebsite(website);
+        supplier.setPhoneNumber(phoneNumber);
 
-            updateAddress(address, entityManager, supplier);
-
-            String imageName = imageProcessor.replaceCurrentImage(selectedImage, supplier, id);
-            supplier.setImageName(imageName);
-        } catch (IOException e) {
-            System.err.println("Error saving image");
-            throw e;
-        } finally {
-            entityManager.getTransaction().commit();
-            entityManager.close();
-        }
+        updateAddress(address, entityManager, supplier);
     }
 
     /**
@@ -461,5 +421,16 @@ public class DatabaseManager {
 
         entityManager.close();
         return supplier;
+    }
+
+    public void updateSupplierImage(int supplierId, String imageName) {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        entityManager.getTransaction().begin();
+
+        Supplier supplier = entityManager.find(Supplier.class, supplierId);
+        supplier.setImageName(imageName);
+
+        entityManager.getTransaction().commit();
+        entityManager.close();
     }
 }
