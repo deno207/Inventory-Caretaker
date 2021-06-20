@@ -26,11 +26,11 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn -Dplatform=linux package
+      run: mvn package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
-        name: Linux-Installer.deb
+        name: Linux-Installer
         path: target/dist/*.deb
         if-no-files-found: error
         retention-days: 1
@@ -49,11 +49,11 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn -Dplatform=win package
+      run: mvn package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
-        name: Window-Installer.exe
+        name: Window-Installer
         path: target/dist/*.exe
         if-no-files-found: error
         retention-days: 1
@@ -72,11 +72,11 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
     - name: Build
-      run: mvn -Dplatform=mac package
+      run: mvn package
     - name: Upload Artifact
       uses: actions/upload-artifact@v2.2.4
       with:
-        name: MacOS-Installer.dmg
+        name: MacOS-Installer
         path: target/dist/*.dmg
         if-no-files-found: error
         retention-days: 1

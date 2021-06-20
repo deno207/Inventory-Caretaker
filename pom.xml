@@ -141,7 +141,6 @@
                             <outputDirectory>${build.module.directory}</outputDirectory>
                             <excludeTransitive>false</excludeTransitive>
                             <includeScope>runtime</includeScope>
-                            <copyPom>true</copyPom>
                         </configuration>
                     </execution>
                 </executions>
