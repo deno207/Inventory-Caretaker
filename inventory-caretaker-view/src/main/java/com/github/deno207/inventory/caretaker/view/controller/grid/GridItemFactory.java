@@ -1,8 +1,8 @@
 package com.github.deno207.inventory.caretaker.view.controller.grid;
 
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.StockItem;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
-import com.github.deno207.inventory.caretaker.view.adaptor.ItemType;
+import com.github.deno207.inventory.caretaker.view.entity.StockItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.ItemType;
 import com.github.deno207.inventory.caretaker.view.adaptor.RemovableSelectionController;
 import com.github.deno207.inventory.caretaker.view.adaptor.SelectionController;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;

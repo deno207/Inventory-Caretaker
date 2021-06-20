@@ -13,8 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.StockItem;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.SubItem;
+import com.github.deno207.inventory.caretaker.view.entity.StockItem;
+import com.github.deno207.inventory.caretaker.view.entity.SubItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 

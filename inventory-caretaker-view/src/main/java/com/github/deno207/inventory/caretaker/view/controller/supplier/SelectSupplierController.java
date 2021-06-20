@@ -1,7 +1,7 @@
 package com.github.deno207.inventory.caretaker.view.controller.supplier;
 
 import javafx.fxml.FXML;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.SelectionController;
 import com.github.deno207.inventory.caretaker.view.controller.category.SelectCategoryController;
 

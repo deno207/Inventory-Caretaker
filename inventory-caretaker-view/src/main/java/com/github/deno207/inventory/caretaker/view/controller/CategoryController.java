@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.view.controller.category.AddCategoryController;
 
 import java.util.List;

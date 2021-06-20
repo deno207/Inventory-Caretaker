@@ -2,7 +2,7 @@ package com.github.deno207.inventory.caretaker.view.controller.category;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.Category;
+import com.github.deno207.inventory.caretaker.view.entity.Category;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 
 import java.io.File;

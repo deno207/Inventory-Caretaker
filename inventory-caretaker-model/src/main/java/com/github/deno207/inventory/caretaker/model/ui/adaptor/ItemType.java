@@ -1,4 +1,4 @@
-package com.github.deno207.inventory.caretaker.view.adaptor;
+package com.github.deno207.inventory.caretaker.model.ui.adaptor;
 
 /**
  * Enum used to define item types for DisplayItems so that item specific behaviour can be defined which out checking

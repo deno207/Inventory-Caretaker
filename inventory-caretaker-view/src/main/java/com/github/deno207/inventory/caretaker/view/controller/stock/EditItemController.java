@@ -1,10 +1,10 @@
 package com.github.deno207.inventory.caretaker.view.controller.stock;
 
 import javafx.stage.Stage;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.Category;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.MeasurementType;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.StockItem;
-import uk.ac.aber.cs39440.inventory.caretaker.data.entity.Supplier;
+import com.github.deno207.inventory.caretaker.view.entity.Category;
+import com.github.deno207.inventory.caretaker.view.entity.MeasurementType;
+import com.github.deno207.inventory.caretaker.view.entity.StockItem;
+import com.github.deno207.inventory.caretaker.view.entity.Supplier;
 import uk.ac.aber.cs39440.inventory.caretaker.data.processor.ImageProcessor;
 import com.github.deno207.inventory.caretaker.view.adaptor.UpdateController;
 

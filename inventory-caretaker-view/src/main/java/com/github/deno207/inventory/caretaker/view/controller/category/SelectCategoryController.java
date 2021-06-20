@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 import com.github.deno207.inventory.caretaker.view.adaptor.SelectionController;
 import com.github.deno207.inventory.caretaker.view.controller.BaseController;
 import com.github.deno207.inventory.caretaker.view.controller.grid.GridItemController;

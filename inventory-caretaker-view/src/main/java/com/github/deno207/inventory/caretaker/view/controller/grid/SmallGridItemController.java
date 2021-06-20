@@ -1,7 +1,7 @@
 package com.github.deno207.inventory.caretaker.view.controller.grid;
 
 import javafx.fxml.FXML;
-import com.github.deno207.inventory.caretaker.view.adaptor.DisplayItem;
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
 
 /**
  * A smaller grid item that does nothing when clicked.

@@ -1,4 +1,4 @@
-package com.github.deno207.inventory.caretaker.view.adaptor;
+package com.github.deno207.inventory.caretaker.model.ui.adaptor;
 
 import com.github.deno207.inventory.caretaker.view.controller.grid.GridItemController;
 
