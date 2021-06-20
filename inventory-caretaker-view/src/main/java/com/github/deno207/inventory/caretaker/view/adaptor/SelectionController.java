@@ -1,5 +1,7 @@
 package com.github.deno207.inventory.caretaker.view.adaptor;
 
+import com.github.deno207.inventory.caretaker.model.ui.adaptor.DisplayItem;
+
 /**
  * Defines a controller as the receiver of a selection choice.
  *

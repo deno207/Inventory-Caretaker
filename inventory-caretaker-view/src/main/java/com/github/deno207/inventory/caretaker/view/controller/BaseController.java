@@ -4,7 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
-import uk.ac.aber.cs39440.inventory.caretaker.data.processor.DatabaseManager;
+import com.github.deno207.inventory.caretaker.model.database.DatabaseManager;
 
 import java.io.IOException;
 

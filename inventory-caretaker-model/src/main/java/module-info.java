@@ -8,5 +8,6 @@ module inventory.caretaker.model {
     opens com.github.deno207.inventory.caretaker.model.entity;
 
     exports com.github.deno207.inventory.caretaker.model.entity;
-    exports com.github.deno207.inventory.caretaker.model.ui.adaptor;
+    exports com.github.deno207.inventory.caretaker.model.ui.adaptor to inventory.caretaker.view;
+    exports com.github.deno207.inventory.caretaker.model.database to inventory.caretaker.view;
 }
